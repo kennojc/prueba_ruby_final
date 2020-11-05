@@ -21,13 +21,25 @@ end
 def build_web_page (hash)
     sources = []
     rover_photos = hash.fetch('photos')
+    
     rover_photos.length.times do |i|
         sources << rover_photos[i]['img_src']
-    end
-    puts sources.class 
-    print sources
-        
+    end   
     
+    
+    head = "<html>\n\t<head>\n\t\t\t<title>NASA PHOTOS</title>\n\t</head>\n\t<body>\n"
+    body = "\t\t<ul>"
+    footer = "\t\t</ul>\n\t</body>\n</html>"
+    sources.each do |e|
+        body += "\n\t\t\t<li><img src=\"#{e}\"></li>\n"
+       
+    end
+    
+    print head+body+footer
+    
+    
+    
+
 
 end
 
@@ -35,4 +47,3 @@ end
 
 hash_from_nasa = request(api_url,api_key)
 build_web_page(hash_from_nasa)
-

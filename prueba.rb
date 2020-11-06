@@ -68,9 +68,12 @@ def build_web_page (hash)
     </html>'
     
     
-    print head+header+section+body+footer
+    nasa_ruby = head+header+section+body+footer
+    File.write('index.html', nasa_ruby)
+
 
 end
 
 hash_from_nasa = request(api_url,api_key)
 build_web_page(hash_from_nasa)
+
